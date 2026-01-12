@@ -36,7 +36,8 @@ def ensure_data_file():
 
     if not os.path.exists(csv_filename):
         print(f"Data file not found locally. Downloading from GitHub...")
-        url = 'https://raw.githubusercontent.com/zacswider/BabyNameExplorer/main/babyNamesUSYOB-full.csv'
+        # Use media.githubusercontent.com for LFS files
+        url = 'https://media.githubusercontent.com/media/zacswider/BabyNameExplorer/main/babyNamesUSYOB-full.csv'
         try:
             urllib.request.urlretrieve(url, csv_filename)
             print(f"Successfully downloaded {csv_filename}")
