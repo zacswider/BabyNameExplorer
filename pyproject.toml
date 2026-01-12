@@ -1,0 +1,14 @@
+[project]
+name = "baby-names"
+version = "0.1.0"
+description = "fun matplotlib interface to explore popularity trends of baby names. 100% vibe coded."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "matplotlib>=3.10.8",
+    "numpy>=2.2.6",
+    "pandas>=2.3.3",
+]
+
+[project.scripts]
+baby-names = "explore:main"
