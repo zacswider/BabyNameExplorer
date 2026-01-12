@@ -34,8 +34,23 @@ def ensure_data_file():
     """Download the CSV file from GitHub if it doesn't exist locally."""
     csv_filename = 'babyNamesUSYOB-full.csv'
 
+    # Check if file exists and is valid (not an LFS pointer)
+    needs_download = False
     if not os.path.exists(csv_filename):
-        print(f"Data file not found locally. Downloading from GitHub...")
+        needs_download = True
+    else:
+        # Check if it's an LFS pointer file (starts with "version https://git-lfs")
+        with open(csv_filename, 'r') as f:
+            first_line = f.readline()
+            if first_line.startswith('version https://git-lfs'):
+                print(f"Detected LFS pointer file. Re-downloading actual data...")
+                needs_download = True
+            elif 'YearOfBirth' not in first_line:
+                print(f"Invalid CSV file detected. Re-downloading...")
+                needs_download = True
+
+    if needs_download:
+        print(f"Downloading data file from GitHub...")
         # Use media.githubusercontent.com for LFS files
         url = 'https://media.githubusercontent.com/media/zacswider/BabyNameExplorer/main/babyNamesUSYOB-full.csv'
         try:
