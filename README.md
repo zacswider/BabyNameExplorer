@@ -14,8 +14,8 @@ Windows
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-Once you have installed UV, you can run wave analysis with:
+Once you have installed UV, you can run the Baby Names Explorer with:
 
 ```bash
-uv run "https://raw.githubusercontent.com/zacswider/BabyNameExplorer/explore.py"
+uv run "https://raw.githubusercontent.com/zacswider/BabyNameExplorer/main/explore.py"
 ```
